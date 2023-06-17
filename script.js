@@ -29,7 +29,11 @@ function createGrid(colsInput, rowsInput){
             const widthPercentage = 100/colsInput;
             div.style.width = widthPercentage + "%";
             div.addEventListener('mouseover', () => {
-                div.style.backgroundColor = "red";
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                const randomColour = "(" + r + ", " + g + ", " + b + ")";
+                div.style.backgroundColor = "rgb" + randomColour;
             });
             column[j] = div;
             rows[i].appendChild(div);
@@ -41,13 +45,6 @@ function createGrid(colsInput, rowsInput){
 
 const btn = document.querySelector("button");
 btn.addEventListener('click', () => {
-    /*
-    for(i = 0; i < 16; i++){
-        for(j = 0; j < 16; j++){
-            columns[i].childNodes[j].style.backgroundColor = "black";   
-        }
-    }
-    */
    const colsInput = prompt("How many columns do you want?");
    const rowsInput = prompt("How many rows do you want?");   
    if(isNaN(colsInput) || isNaN(rowsInput)){
